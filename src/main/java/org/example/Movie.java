@@ -12,6 +12,14 @@ public abstract class Movie {
     return title;
   }
 
+  protected abstract double basePrice();
+
+  protected abstract int daysForExtraAmount();
+
+  protected double extraAmount() {
+    return 1.5;
+  }
+
   abstract int calculateFrequentRenterPoints(int daysRented);
 
   abstract double calculateAmount(int daysRented);

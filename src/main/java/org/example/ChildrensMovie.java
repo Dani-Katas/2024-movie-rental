@@ -12,11 +12,21 @@ public class ChildrensMovie extends Movie {
   }
 
   @Override
+  protected double basePrice() {
+    return 1.5;
+  }
+
+  @Override
+  protected int daysForExtraAmount() {
+    return 3;
+  }
+
+  @Override
   double calculateAmount(final int daysRented) {
-    double thisAmount = 1.5;
-    final int daysAfterThirdDay = daysRented - 3;
-    if (daysAfterThirdDay > 0) {
-      thisAmount += daysAfterThirdDay * 1.5;
+    double thisAmount = basePrice();
+    final int daysAfter = daysRented - daysForExtraAmount();
+    if (daysAfter > 0) {
+      thisAmount += daysAfter * extraAmount();
     }
     return thisAmount;
   }

@@ -12,7 +12,27 @@ public class NewReleaseMovie extends Movie {
   }
 
   @Override
+  protected double basePrice() {
+    return 0;
+  }
+
+  @Override
+  protected int daysForExtraAmount() {
+    return 0;
+  }
+
+  @Override
+  protected double extraAmount() {
+    return 3;
+  }
+
+  @Override
   double calculateAmount(final int daysRented) {
-    return daysRented * 3;
+    double thisAmount = basePrice();
+    final int daysAfter = daysRented - daysForExtraAmount();
+    if (daysAfter > 0) {
+      thisAmount += daysAfter * extraAmount();
+    }
+    return thisAmount;
   }
 }

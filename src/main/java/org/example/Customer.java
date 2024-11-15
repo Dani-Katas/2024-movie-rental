@@ -5,32 +5,26 @@ import java.util.List;
 
 public class Customer {
 
-    private String _name;
-    private List<Rental> _rentals = new ArrayList<>();
+    private final String name;
+    private final List<Rental> rentals = new ArrayList<>();
 
     public Customer(String name) {
-        _name = name;
+        this.name = name;
     }
 
     public void addRental(Rental arg) {
-        _rentals.add(arg);
-    }
-
-    public String getName() {
-        return _name;
+        rentals.add(arg);
     }
 
     public String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
-        String result = "Rental Record for " + getName() + "\n";
+        String result = "Rental Record for " + name + "\n";
 
-        for (Rental rental : _rentals) {
+        for (Rental rental : rentals) {
             final double thisAmount = rental.calculateAmount();
             frequentRenterPoints += rental.calculateFrequentRenterPoints();
-
-            // show figures for this rental
-            result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
+            result += "\t" + rental.getMovie().getTitle() + "\t" + thisAmount + "\n";
             totalAmount += thisAmount;
         }
 

@@ -22,15 +22,20 @@ public class Customer {
 
         for (Rental rental : rentals) {
             final double thisAmount = rental.calculateAmount();
-            frequentRenterPoints += rental.calculateFrequentRenterPoints();
             result += "\t" + rental.getMovieTitle() + "\t" + thisAmount + "\n";
         }
 
-      // add footer lines
+        frequentRenterPoints = getFrequentRenterPoints();
+
+        // add footer lines
         result += "Amount owed is " + getTotalAmount() + "\n";
         result += "You earned " + frequentRenterPoints + " frequent renter points";
 
         return result;
+    }
+
+    private int getFrequentRenterPoints() {
+      return rentals.stream().mapToInt(Rental::calculateFrequentRenterPoints).sum();
     }
 
     private double getTotalAmount() {

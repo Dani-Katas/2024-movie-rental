@@ -13,6 +13,10 @@ public class Rental {
         _daysRented = daysRented;
     }
 
+    String getTitle() {
+        return getMovie().getTitle();
+    }
+
     int calculateFrequentRenterPoints() {
         if ((getMovie().getPriceCode() == Movie.NEW_RELEASE) && getDaysRented() > 1) {
           return 2;

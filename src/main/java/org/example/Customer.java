@@ -17,22 +17,24 @@ public class Customer {
     }
 
     public String statement() {
-        double totalAmount = 0;
-        int frequentRenterPoints = 0;
+      int frequentRenterPoints = 0;
         String result = "Rental Record for " + name + "\n";
 
         for (Rental rental : rentals) {
             final double thisAmount = rental.calculateAmount();
             frequentRenterPoints += rental.calculateFrequentRenterPoints();
             result += "\t" + rental.getMovieTitle() + "\t" + thisAmount + "\n";
-            totalAmount += thisAmount;
         }
 
-        // add footer lines
-        result += "Amount owed is " + totalAmount + "\n";
+      // add footer lines
+        result += "Amount owed is " + getTotalAmount() + "\n";
         result += "You earned " + frequentRenterPoints + " frequent renter points";
 
         return result;
+    }
+
+    private double getTotalAmount() {
+      return rentals.stream().mapToDouble(Rental::calculateAmount).sum();
     }
 
 }

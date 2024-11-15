@@ -7,7 +7,17 @@ public class RegularMovie extends Movie {
   }
 
   @Override
-  int calculateFrequentRenterPoints(final int daysRented1) {
+  int calculateFrequentRenterPoints(final int daysRented) {
     return 1;
+  }
+
+  @Override
+  double calculateAmount(final int daysRented) {
+    double thisAmount = 2;
+    final int daysAfterSecondDay = daysRented - 2;
+    if (daysAfterSecondDay > 0) {
+      thisAmount += daysAfterSecondDay * 1.5;
+    }
+    return thisAmount;
   }
 }

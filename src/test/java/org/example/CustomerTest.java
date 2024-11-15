@@ -27,6 +27,6 @@ public class CustomerTest {
                 "Amount owed is 19.0\n" +
                 "You earned 7 frequent renter points";
 
-        assertThat(customer.statement()).isEqualTo(expected);
+      assertThat(customer.statement(new StringStatementPrinter())).isEqualTo(expected);
     }
 }

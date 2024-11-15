@@ -2,13 +2,10 @@ package org.example;
 
 public abstract class Movie {
 
-  protected final int priceCode;
-
   private final String title;
 
-  protected Movie(String title, int priceCode) {
+  protected Movie(String title) {
     this.title = title;
-    this.priceCode = priceCode;
   }
 
   public String getTitle() {

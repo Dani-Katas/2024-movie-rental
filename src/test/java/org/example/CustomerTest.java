@@ -29,4 +29,21 @@ public class CustomerTest {
 
       assertThat(customer.statement(new StringStatementPrinter())).isEqualTo(expected);
     }
+
+    @Test
+    public void htmlTest() {
+        Customer customer = new Customer("martin");
+        customer.addRental(new Rental(new Movie("Ran", Movie.REGULAR), 3));
+        customer.addRental(new Rental(new Movie("Trois Couleurs: Bleu", Movie.REGULAR), 2));
+
+        String expected = "<h1>Rental Record for <em>martin</em></h1>\n"
+            + "<table>\n"
+            + "  <tr><td>Ran</td><td>3.5</td></tr>\n"
+            + "  <tr><td>Trois Couleurs: Bleu</td><td>2.0</td></tr>\n"
+            + "</table>\n"
+            + "<p>Amount owed is <em>5.5</em></p>\n"
+            + "<p>You earned <em>2</em> frequent renter points</p>";
+
+        assertThat(customer.statement(new StringStatementPrinter())).isEqualTo(expected);
+    }
 }

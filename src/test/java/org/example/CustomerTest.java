@@ -9,12 +9,12 @@ public class CustomerTest {
     @Test
     public void test() {
         Customer customer = new Customer("Bob");
-        customer.addRental(new Rental(new Movie("Jaws", Movie.REGULAR), 2));
-        customer.addRental(new Rental(new Movie("Golden Eye", Movie.REGULAR), 3));
-        customer.addRental(new Rental(new Movie("Short New", Movie.NEW_RELEASE), 1));
-        customer.addRental(new Rental(new Movie("Long New", Movie.NEW_RELEASE), 2));
-        customer.addRental(new Rental(new Movie("Bambi", Movie.CHILDRENS), 3));
-        customer.addRental(new Rental(new Movie("Toy Story", Movie.CHILDRENS), 4));
+        customer.addRental(new Rental(Movie.createMovie("Jaws", Movie.REGULAR), 2));
+        customer.addRental(new Rental(Movie.createMovie("Golden Eye", Movie.REGULAR), 3));
+        customer.addRental(new Rental(Movie.createMovie("Short New", Movie.NEW_RELEASE), 1));
+        customer.addRental(new Rental(Movie.createMovie("Long New", Movie.NEW_RELEASE), 2));
+        customer.addRental(new Rental(Movie.createMovie("Bambi", Movie.CHILDRENS), 3));
+        customer.addRental(new Rental(Movie.createMovie("Toy Story", Movie.CHILDRENS), 4));
 
         String expected = "" +
                 "Rental Record for Bob\n" +
@@ -33,8 +33,8 @@ public class CustomerTest {
     @Test
     public void htmlTest() {
         Customer customer = new Customer("martin");
-        customer.addRental(new Rental(new Movie("Ran", Movie.REGULAR), 3));
-        customer.addRental(new Rental(new Movie("Trois Couleurs: Bleu", Movie.REGULAR), 2));
+        customer.addRental(new Rental(Movie.createMovie("Ran", Movie.REGULAR), 3));
+        customer.addRental(new Rental(Movie.createMovie("Trois Couleurs: Bleu", Movie.REGULAR), 2));
 
         String expected = "<h1>Rental Record for <em>martin</em></h1>\n"
             + "<table>\n"

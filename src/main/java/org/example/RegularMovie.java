@@ -17,17 +17,7 @@ public class RegularMovie extends Movie {
   }
 
   @Override
-  protected int daysForExtraAmount() {
+  protected int maxRetingDays() {
     return 2;
-  }
-
-  @Override
-  double calculateAmount(final int daysRented) {
-    double thisAmount = basePrice();
-    final int daysAfter = daysRented - daysForExtraAmount();
-    if (daysAfter > 0) {
-      thisAmount += daysAfter * extraAmount();
-    }
-    return thisAmount;
   }
 }

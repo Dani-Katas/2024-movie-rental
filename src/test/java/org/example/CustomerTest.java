@@ -44,6 +44,6 @@ public class CustomerTest {
             + "<p>Amount owed is <em>5.5</em></p>\n"
             + "<p>You earned <em>2</em> frequent renter points</p>";
 
-        assertThat(customer.statement(new StringStatementPrinter())).isEqualTo(expected);
+        assertThat(customer.statement(new HTMLStatementPrinter())).isEqualTo(expected);
     }
 }

@@ -13,16 +13,16 @@ public class NewReleaseMovie extends Movie {
 
   @Override
   protected double basePrice() {
-    return 0;
+    return 3;
   }
 
   @Override
-  protected int maxRetingDays() {
-    return 0;
+  protected int maxRentingDays() {
+    return 1;
   }
 
   @Override
-  protected double extraAmount() {
+  protected double penaltyAmount() {
     return 3;
   }
 

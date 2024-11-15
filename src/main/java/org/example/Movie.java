@@ -14,26 +14,28 @@ public abstract class Movie {
 
   protected abstract double basePrice();
 
-  protected abstract int maxRetingDays();
+  protected abstract int maxRentingDays();
 
-  protected double extraAmount() {
+  protected double penaltyAmount() {
     return 1.5;
   }
 
-  abstract int calculateFrequentRenterPoints(int daysRented);
+  int calculateFrequentRenterPoints(int daysRented) {
+    return 1;
+  }
 
-  boolean hasPenaltyFor(final int daysRented) {
-    return daysRented > maxRetingDays();
+  private boolean hasPenaltyFor(final int daysRented) {
+    return daysRented > maxRentingDays();
   }
 
   double calculateAmount(final int daysRented) {
     if (hasPenaltyFor(daysRented)) {
-      return basePrice() + daysWithPenalty(daysRented) * extraAmount();
+      return basePrice() + daysWithPenalty(daysRented) * penaltyAmount();
     }
     return basePrice();
   }
 
   private int daysWithPenalty(final int daysRented) {
-    return daysRented - maxRetingDays();
+    return daysRented - maxRentingDays();
   }
 }

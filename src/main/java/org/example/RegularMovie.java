@@ -7,17 +7,12 @@ public class RegularMovie extends Movie {
   }
 
   @Override
-  int calculateFrequentRenterPoints(final int daysRented) {
-    return 1;
-  }
-
-  @Override
   protected double basePrice() {
     return 2;
   }
 
   @Override
-  protected int maxRetingDays() {
+  protected int maxRentingDays() {
     return 2;
   }
 }

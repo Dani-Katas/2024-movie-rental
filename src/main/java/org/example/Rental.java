@@ -5,20 +5,20 @@ package org.example;
  */
 public class Rental {
 
-    private Movie _movie;
-    private int _daysRented;
+    private final Movie movie;
+    private final int daysRented;
 
     public Rental(Movie movie, int daysRented) {
-        _movie = movie;
-        _daysRented = daysRented;
+        this.movie = movie;
+        this.daysRented = daysRented;
     }
 
     String getMovieTitle() {
-        return getMovie().getTitle();
+        return movie.getTitle();
     }
 
     int calculateFrequentRenterPoints() {
-        if ((getMovie().getPriceCode() == Movie.NEW_RELEASE) && getDaysRented() > 1) {
+        if ((movie.getPriceCode() == Movie.NEW_RELEASE) && daysRented > 1) {
           return 2;
         } else {
             return 1;
@@ -29,29 +29,22 @@ public class Rental {
         double thisAmount = 0;
 
         //determine amounts for each line
-        switch (getMovie().getPriceCode()) {
+        switch (movie.getPriceCode()) {
             case Movie.REGULAR:
                 thisAmount += 2;
-                if (getDaysRented() > 2)
-                    thisAmount += (getDaysRented() - 2) * 1.5;
+                if (daysRented > 2)
+                    thisAmount += (daysRented - 2) * 1.5;
                 break;
             case Movie.NEW_RELEASE:
-                thisAmount += getDaysRented() * 3;
+                thisAmount += daysRented * 3;
                 break;
             case Movie.CHILDRENS:
                 thisAmount += 1.5;
-                if (getDaysRented() > 3)
-                    thisAmount += (getDaysRented() - 3) * 1.5;
+                if (daysRented > 3)
+                    thisAmount += (daysRented - 3) * 1.5;
                 break;
         }
         return thisAmount;
     }
 
-    public int getDaysRented() {
-        return _daysRented;
-    }
-
-    public Movie getMovie() {
-        return _movie;
-    }
 }

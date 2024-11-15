@@ -17,18 +17,7 @@ public abstract class Movie {
     this.priceCode = priceCode;
   }
 
-  public static Movie createMovie(String title, int priceCode) {
-    if (priceCode == CHILDRENS) {
-      return new ChildrensMovie(title);
-    } else if (priceCode == NEW_RELEASE) {
-      return new NewReleaseMovie(title);
-    } else if (priceCode == REGULAR) {
-      return new RegularMovie(title);
-    }
-    throw new RuntimeException("Unknown movie type " + priceCode);
-  }
-
-  public String getTitle() {
+    public String getTitle() {
     return title;
   }
 

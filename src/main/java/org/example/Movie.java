@@ -19,11 +19,11 @@ public abstract class Movie {
 
   public static Movie createMovie(String title, int priceCode) {
     if (priceCode == CHILDRENS) {
-      return new ChildrensMovie(title, priceCode);
+      return new ChildrensMovie(title);
     } else if (priceCode == NEW_RELEASE) {
-      return new NewReleaseMovie(title, priceCode);
+      return new NewReleaseMovie(title);
     } else if (priceCode == REGULAR) {
-      return new RegularMovie(title, priceCode);
+      return new RegularMovie(title);
     }
     throw new RuntimeException("Unknown movie type " + priceCode);
   }

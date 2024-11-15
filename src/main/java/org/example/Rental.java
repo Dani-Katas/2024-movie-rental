@@ -13,7 +13,7 @@ public class Rental {
         _daysRented = daysRented;
     }
 
-    String getTitle() {
+    String getMovieTitle() {
         return getMovie().getTitle();
     }
 

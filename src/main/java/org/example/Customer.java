@@ -24,7 +24,7 @@ public class Customer {
         for (Rental rental : rentals) {
             final double thisAmount = rental.calculateAmount();
             frequentRenterPoints += rental.calculateFrequentRenterPoints();
-            result += "\t" + rental.getTitle() + "\t" + thisAmount + "\n";
+            result += "\t" + rental.getMovieTitle() + "\t" + thisAmount + "\n";
             totalAmount += thisAmount;
         }
 

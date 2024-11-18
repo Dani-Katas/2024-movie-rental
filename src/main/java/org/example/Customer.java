@@ -1,6 +1,5 @@
 package org.example;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.example.formatter.StatementFormatter;
@@ -9,14 +8,14 @@ public class Customer {
 
   private final String name;
 
-  private final List<Rental> rentals = new ArrayList<>();
+  private final Rentals rentals = new Rentals();
 
   public Customer(String name) {
     this.name = name;
   }
 
   public void addRental(Rental arg) {
-    rentals.add(arg);
+    rentals.getRentals().add(arg);
   }
 
   public String statement(final StatementFormatter statementFormatter) {
@@ -24,16 +23,16 @@ public class Customer {
   }
 
   public Statement getStatement() {
-    final List<StatementRental> rentals = this.rentals.stream().map(Rental::toStatement).toList();
+    final List<StatementRental> rentals = this.rentals.getRentals().stream().map(Rental::toStatement).toList();
     return new Statement(name, rentals, getTotalAmount(), getFrequentRenterPoints());
   }
 
   private int getFrequentRenterPoints() {
-    return rentals.stream().mapToInt(Rental::calculateFrequentRenterPoints).sum();
+    return rentals.getRentals().stream().mapToInt(Rental::calculateFrequentRenterPoints).sum();
   }
 
   private double getTotalAmount() {
-    return rentals.stream().mapToDouble(Rental::calculateAmount).sum();
+    return rentals.getRentals().stream().mapToDouble(Rental::calculateAmount).sum();
   }
 
 }

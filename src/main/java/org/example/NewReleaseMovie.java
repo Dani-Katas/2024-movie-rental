@@ -3,22 +3,12 @@ package org.example;
 public class NewReleaseMovie extends Movie {
 
   public NewReleaseMovie(final String title) {
-    super(title);
+    super(title, MovieType.NEW_RELEASE);
   }
 
   @Override
-  int calculateFrequentRenterPoints(final int daysRented) {
+  int frequentRenterPointsFor(final int daysRented) {
     return daysRented > 1 ? 2 : 1;
-  }
-
-  @Override
-  protected double basePrice() {
-    return 3;
-  }
-
-  @Override
-  protected int maxRentingDays() {
-    return 1;
   }
 
   @Override

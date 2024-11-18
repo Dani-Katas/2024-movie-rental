@@ -1,31 +1,46 @@
 package org.example;
 
-public abstract class Movie {
+public class Movie {
 
   private final String title;
 
-  protected Movie(String title) {
+  private final MovieType type;
+
+  protected Movie(String title, final MovieType movieType) {
     this.title = title;
+    this.type = movieType;
+  }
+
+  public static Movie createChildrens(final String title) {
+    return new Movie(title, MovieType.CHILDRENS);
+  }
+
+  public static Movie createNewRelease(final String title) {
+    return new Movie(title, MovieType.NEW_RELEASE);
+  }
+
+  public static Movie createRegular(final String title) {
+    return new Movie(title, MovieType.REGULAR);
   }
 
   public String getTitle() {
     return title;
   }
 
-  protected abstract double basePrice();
-
-  protected abstract int maxRentingDays();
-
-  protected double penaltyAmount() {
-    return 1.5;
+  protected double basePrice() {
+    return type.basePrice();
   }
 
-  int calculateFrequentRenterPoints(int daysRented) {
-    return 1;
+  protected double penaltyAmount() {
+    return type.penaltyAmount();
+  }
+
+  int frequentRenterPointsFor(int daysRented) {
+    return type.frequentRenterPointsFor(daysRented);
   }
 
   private boolean hasPenaltyFor(final int daysRented) {
-    return daysRented > maxRentingDays();
+    return daysRented > type.maxRentingDays();
   }
 
   double calculateAmount(final int daysRented) {
@@ -36,6 +51,6 @@ public abstract class Movie {
   }
 
   private int daysWithPenalty(final int daysRented) {
-    return daysRented - maxRentingDays();
+    return daysRented - type.maxRentingDays();
   }
 }

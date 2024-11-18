@@ -24,6 +24,7 @@ public class Customer {
   }
 
   public Statement getStatement() {
+    final List<StatementRental> rentals = this.rentals.stream().map(Rental::toStatement).toList();
     return new Statement(name, rentals, getTotalAmount(), getFrequentRenterPoints());
   }
 

@@ -2,6 +2,7 @@ package org.example.formatter;
 
 import org.example.Rental;
 import org.example.Statement;
+import org.example.StatementRental;
 
 public class StringStatementFormatter implements StatementFormatter {
 
@@ -9,8 +10,8 @@ public class StringStatementFormatter implements StatementFormatter {
   public String print(final Statement statement) {
     String result = "Rental Record for " + statement.name() + "\n";
 
-    for (Rental rental : statement.rentals()) {
-      result += "\t" + rental.getMovieTitle() + "\t" + rental.calculateAmount() + "\n";
+    for (StatementRental rental : statement.rentals()) {
+      result += "\t" + rental.title() + "\t" + rental.amount() + "\n";
     }
 
     // add footer lines

@@ -13,6 +13,10 @@ public class Rental {
         this.daysRented = daysRented;
     }
 
+    StatementRental toStatement() {
+      return new StatementRental(getMovieTitle(), calculateAmount());
+    }
+
     public String getMovieTitle() {
         return movie.getTitle();
     }

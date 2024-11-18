@@ -4,7 +4,8 @@ import java.util.List;
 
 public record Statement(
     String name,
-    List<Rental> rentals,
+    List<StatementRental> rentals,
     double totalAmount,
     int frequentRenterPoints
 ) {}
+

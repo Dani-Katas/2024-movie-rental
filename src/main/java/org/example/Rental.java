@@ -13,10 +13,6 @@ public final class Rental {
         this.daysRented = daysRented;
     }
 
-    StatementRental toStatement() {
-      return new StatementRental(getMovieTitle(), calculateAmount());
-    }
-
     public String getMovieTitle() {
         return movie.getTitle();
     }
@@ -27,5 +23,9 @@ public final class Rental {
 
     public double calculateAmount() {
         return movie.calculateAmount(daysRented);
+    }
+
+    StatementRental toStatement() {
+        return new StatementRental(getMovieTitle(), calculateAmount());
     }
 }

@@ -30,4 +30,8 @@ public class Rentals {
   List<StatementRental> toRentalStatements() {
     return getRentals().stream().map(Rental::toStatement).toList();
   }
+
+  boolean add(final Rental arg) {
+    return getRentals().add(arg);
+  }
 }

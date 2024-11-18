@@ -11,6 +11,16 @@ public enum MovieType {
     int maxRentingDays() {
       return 3;
     }
+
+    @Override
+    double penaltyAmount() {
+      return 1.5;
+    }
+
+    @Override
+    int frequentRenterPointsFor(final int daysRented) {
+      return 1;
+    }
   },
   NEW_RELEASE {
     @Override
@@ -21,6 +31,16 @@ public enum MovieType {
     @Override
     int maxRentingDays() {
       return 1;
+    }
+
+    @Override
+    double penaltyAmount() {
+      return 3;
+    }
+
+    @Override
+    int frequentRenterPointsFor(final int daysRented) {
+      return daysRented > 1 ? 2 : 1;
     }
   },
   REGULAR {
@@ -33,27 +53,24 @@ public enum MovieType {
     int maxRentingDays() {
       return 2;
     }
+
+    @Override
+    double penaltyAmount() {
+      return 1.5;
+    }
+
+    @Override
+    int frequentRenterPointsFor(final int daysRented) {
+      return 1;
+    }
   };
 
   abstract double basePrice();
 
   abstract int maxRentingDays();
 
-  double penaltyAmount() {
-    if (this == MovieType.CHILDRENS || this == MovieType.REGULAR) {
-      return 1.5;
-    } else if (this == MovieType.NEW_RELEASE) {
-      return 3;
-    }
-    throw new IllegalArgumentException();
-  }
+  abstract double penaltyAmount();
 
-  int frequentRenterPointsFor(final int daysRented) {
-    if (this == MovieType.CHILDRENS || this == MovieType.REGULAR) {
-      return 1;
-    } else if (this == MovieType.NEW_RELEASE) {
-      return daysRented > 1 ? 2 : 1;
-    }
-    throw new IllegalArgumentException();
-  }
+  abstract int frequentRenterPointsFor(final int daysRented);
+
 }

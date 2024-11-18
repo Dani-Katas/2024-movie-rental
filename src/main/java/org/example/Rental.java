@@ -3,7 +3,7 @@ package org.example;
 /**
  * The rental class represents a customer renting a movie.
  */
-public class Rental {
+public final class Rental {
 
     private final Movie movie;
     private final int daysRented;

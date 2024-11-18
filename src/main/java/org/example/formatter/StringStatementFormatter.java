@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.example.Statement;
 import org.example.StatementRental;
 
-public class StringStatementFormatter implements StatementFormatter {
+public final class StringStatementFormatter implements StatementFormatter {
 
   @Override
   public String print(final Statement statement) {

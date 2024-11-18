@@ -8,7 +8,7 @@ import org.example.Rental;
 import org.example.Statement;
 import org.example.StatementRental;
 
-public class HTMLStatementFormatter implements StatementFormatter {
+public final class HTMLStatementFormatter implements StatementFormatter {
 
   @Override
   public String print(final Statement statement) {
@@ -26,35 +26,35 @@ public class HTMLStatementFormatter implements StatementFormatter {
     return tr(column1 + column2);
   }
 
-  public String h1(final String content) {
+  private String h1(final String content) {
     return wrap("h1", content);
   }
 
-  public String td(final String content) {
+  private String td(final String content) {
     return wrap("td", content);
   }
 
-  public String tr(final String content) {
+  private String tr(final String content) {
     return wrap("tr", content);
   }
 
-  public String td(final double content) {
+  private String td(final double content) {
     return td(String.valueOf(content));
   }
 
-  public String p(final String content) {
+  private String p(final String content) {
     return wrap("p", content);
   }
 
-  public String em(final String content) {
+  private String em(final String content) {
     return wrap("em", content);
   }
 
-  public String em(final double content) {
+  private String em(final double content) {
     return em(String.valueOf(content));
   }
 
-  public String em(final int content) {
+  private String em(final int content) {
     return em(String.valueOf(content));
   }
 
@@ -62,7 +62,7 @@ public class HTMLStatementFormatter implements StatementFormatter {
     return wrapNested("table", content);
   }
 
-  public String wrap(String tag, String content) {
+  private String wrap(String tag, String content) {
     return open(tag) + content + close(tag);
   }
 
@@ -74,7 +74,7 @@ public class HTMLStatementFormatter implements StatementFormatter {
     return "<" + tag + ">";
   }
 
-  public List<String> wrapNested(String tag, Stream<String> content) {
+  private List<String> wrapNested(String tag, Stream<String> content) {
     ArrayList<String> lines = new ArrayList<>();
     lines.add(open(tag));
     lines.addAll(content.map(this::indent).toList());

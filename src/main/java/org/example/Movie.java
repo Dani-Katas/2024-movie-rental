@@ -1,6 +1,6 @@
 package org.example;
 
-public class Movie {
+public final class Movie {
 
   private final String title;
 

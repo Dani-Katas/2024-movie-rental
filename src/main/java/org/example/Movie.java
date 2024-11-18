@@ -6,7 +6,7 @@ public class Movie {
 
   private final MovieType type;
 
-  protected Movie(String title, final MovieType movieType) {
+  private Movie(String title, final MovieType movieType) {
     this.title = title;
     this.type = movieType;
   }
@@ -27,14 +27,6 @@ public class Movie {
     return title;
   }
 
-  protected double basePrice() {
-    return type.basePrice();
-  }
-
-  protected double penaltyAmount() {
-    return type.penaltyAmount();
-  }
-
   int frequentRenterPointsFor(int daysRented) {
     return type.frequentRenterPointsFor(daysRented);
   }
@@ -45,9 +37,9 @@ public class Movie {
 
   double calculateAmount(final int daysRented) {
     if (hasPenaltyFor(daysRented)) {
-      return basePrice() + daysWithPenalty(daysRented) * penaltyAmount();
+      return type.basePrice() + daysWithPenalty(daysRented) * type.penaltyAmount();
     }
-    return basePrice();
+    return type.basePrice();
   }
 
   private int daysWithPenalty(final int daysRented) {

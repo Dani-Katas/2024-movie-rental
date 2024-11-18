@@ -2,6 +2,8 @@ package org.example;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import org.example.formatter.HTMLStatementFormatter;
+import org.example.formatter.StringStatementFormatter;
 import org.junit.jupiter.api.Test;
 
 public class CustomerTest {
@@ -27,7 +29,7 @@ public class CustomerTest {
         "Amount owed is 19.0\n" +
         "You earned 7 frequent renter points";
 
-    assertThat(customer.statement(new StringStatementPrinter())).isEqualTo(expected);
+    assertThat(customer.statement(new StringStatementFormatter())).isEqualTo(expected);
   }
 
   @Test
@@ -44,6 +46,6 @@ public class CustomerTest {
         + "<p>Amount owed is <em>5.5</em></p>\n"
         + "<p>You earned <em>2</em> frequent renter points</p>";
 
-    assertThat(customer.statement(new HTMLStatementPrinter())).isEqualTo(expected);
+    assertThat(customer.statement(new HTMLStatementFormatter())).isEqualTo(expected);
   }
 }

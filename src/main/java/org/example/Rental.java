@@ -13,7 +13,7 @@ public class Rental {
         this.daysRented = daysRented;
     }
 
-    String getMovieTitle() {
+    public String getMovieTitle() {
         return movie.getTitle();
     }
 
@@ -21,7 +21,7 @@ public class Rental {
         return movie.frequentRenterPointsFor(daysRented);
     }
 
-    double calculateAmount() {
+    public double calculateAmount() {
         return movie.calculateAmount(daysRented);
     }
 }

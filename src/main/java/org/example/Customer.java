@@ -3,6 +3,8 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.example.formatter.StatementFormatter;
+
 public class Customer {
 
   private final String name;
@@ -17,8 +19,8 @@ public class Customer {
     rentals.add(arg);
   }
 
-  public String statement(final StatementPrinter statementPrinter) {
-    return statementPrinter.print(getStatement());
+  public String statement(final StatementFormatter statementFormatter) {
+    return statementFormatter.print(getStatement());
   }
 
   public Statement getStatement() {

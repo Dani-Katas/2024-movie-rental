@@ -1,6 +1,9 @@
-package org.example;
+package org.example.formatter;
 
-public class StringStatementPrinter implements StatementPrinter {
+import org.example.Rental;
+import org.example.Statement;
+
+public class StringStatementFormatter implements StatementFormatter {
 
   @Override
   public String print(final Statement statement) {

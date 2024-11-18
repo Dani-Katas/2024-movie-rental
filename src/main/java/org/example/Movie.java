@@ -11,15 +11,15 @@ public final class Movie {
     this.type = movieType;
   }
 
-  public static Movie createChildrens(final String title) {
+  public static Movie childrens(final String title) {
     return new Movie(title, MovieType.CHILDRENS);
   }
 
-  public static Movie createNewRelease(final String title) {
+  public static Movie newRelease(final String title) {
     return new Movie(title, MovieType.NEW_RELEASE);
   }
 
-  public static Movie createRegular(final String title) {
+  public static Movie regular(final String title) {
     return new Movie(title, MovieType.REGULAR);
   }
 

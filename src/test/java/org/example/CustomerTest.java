@@ -11,12 +11,12 @@ public class CustomerTest {
   @Test
   public void test() {
     Customer customer = new Customer("Bob");
-    customer.addRental(new Rental(Movie.createRegular("Jaws"), 2));
-    customer.addRental(new Rental(Movie.createRegular("Golden Eye"), 3));
-    customer.addRental(new Rental(Movie.createNewRelease("Short New"), 1));
-    customer.addRental(new Rental(Movie.createNewRelease("Long New"), 2));
-    customer.addRental(new Rental(Movie.createChildrens("Bambi"), 3));
-    customer.addRental(new Rental(Movie.createChildrens("Toy Story"), 4));
+    customer.addRental(new Rental(Movie.regular("Jaws"), 2));
+    customer.addRental(new Rental(Movie.regular("Golden Eye"), 3));
+    customer.addRental(new Rental(Movie.newRelease("Short New"), 1));
+    customer.addRental(new Rental(Movie.newRelease("Long New"), 2));
+    customer.addRental(new Rental(Movie.childrens("Bambi"), 3));
+    customer.addRental(new Rental(Movie.childrens("Toy Story"), 4));
 
     String expected = "" +
         "Rental Record for Bob\n" +
@@ -35,8 +35,8 @@ public class CustomerTest {
   @Test
   public void htmlTest() {
     Customer customer = new Customer("martin");
-    customer.addRental(new Rental(Movie.createRegular("Ran"), 3));
-    customer.addRental(new Rental(Movie.createRegular("Trois Couleurs: Bleu"), 2));
+    customer.addRental(new Rental(Movie.regular("Ran"), 3));
+    customer.addRental(new Rental(Movie.regular("Trois Couleurs: Bleu"), 2));
 
     String expected = "<h1>Rental Record for <em>martin</em></h1>\n"
         + "<table>\n"

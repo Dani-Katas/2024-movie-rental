@@ -1,6 +1,7 @@
 package org.example.formatter;
 
-import org.example.Rental;
+import java.util.ArrayList;
+
 import org.example.Statement;
 import org.example.StatementRental;
 
@@ -8,16 +9,21 @@ public class StringStatementFormatter implements StatementFormatter {
 
   @Override
   public String print(final Statement statement) {
-    String result = "Rental Record for " + statement.name() + "\n";
-
+    ArrayList<String> lines = new ArrayList<>();
+    lines.add("Rental Record for " + statement.name());
     for (StatementRental rental : statement.rentals()) {
-      result += "\t" + rental.title() + "\t" + rental.amount() + "\n";
+      lines.add(indent(toRow(rental)));
     }
+    lines.add("Amount owed is " + statement.totalAmount());
+    lines.add("You earned " + statement.frequentRenterPoints() + " frequent renter points");
+    return String.join("\n", lines);
+  }
 
-    // add footer lines
-    result += "Amount owed is " + statement.totalAmount() + "\n";
-    result += "You earned " + statement.frequentRenterPoints() + " frequent renter points";
+  private String toRow(final StatementRental rental) {
+    return rental.title() + "\t" + rental.amount();
+  }
 
-    return result;
+  private String indent(final String text) {
+    return "\t" + text;
   }
 }

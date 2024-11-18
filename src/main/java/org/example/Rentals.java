@@ -15,23 +15,19 @@ public class Rentals {
     return new Rentals();
   }
 
-  public List<Rental> getRentals() {
-    return rentals;
-  }
-
   double getTotalAmount() {
-    return getRentals().stream().mapToDouble(Rental::calculateAmount).sum();
+    return rentals.stream().mapToDouble(Rental::calculateAmount).sum();
   }
 
   int getFrequentRenterPoints() {
-    return getRentals().stream().mapToInt(Rental::calculateFrequentRenterPoints).sum();
+    return rentals.stream().mapToInt(Rental::calculateFrequentRenterPoints).sum();
   }
 
   List<StatementRental> toRentalStatements() {
-    return getRentals().stream().map(Rental::toStatement).toList();
+    return rentals.stream().map(Rental::toStatement).toList();
   }
 
-  boolean add(final Rental arg) {
-    return getRentals().add(arg);
+  void add(final Rental arg) {
+    rentals.add(arg);
   }
 }

@@ -1,14 +1,12 @@
 package org.example;
 
-import java.util.List;
-
 import org.example.formatter.StatementFormatter;
 
 public class Customer {
 
   private final String name;
 
-  private final Rentals rentals = new Rentals();
+  private final Rentals rentals = Rentals.empty();
 
   public Customer(String name) {
     this.name = name;
@@ -19,20 +17,15 @@ public class Customer {
   }
 
   public String statement(final StatementFormatter statementFormatter) {
-    return statementFormatter.print(getStatement());
+    return statementFormatter.print(toStatement());
   }
 
-  public Statement getStatement() {
-    final List<StatementRental> rentals = this.rentals.getRentals().stream().map(Rental::toStatement).toList();
-    return new Statement(name, rentals, getTotalAmount(), getFrequentRenterPoints());
+  private Statement toStatement() {
+    return new Statement(
+        name,
+        rentals.toRentalStatements(),
+        rentals.getTotalAmount(),
+        rentals.getFrequentRenterPoints()
+    );
   }
-
-  private int getFrequentRenterPoints() {
-    return rentals.getRentals().stream().mapToInt(Rental::calculateFrequentRenterPoints).sum();
-  }
-
-  private double getTotalAmount() {
-    return rentals.getRentals().stream().mapToDouble(Rental::calculateAmount).sum();
-  }
-
 }

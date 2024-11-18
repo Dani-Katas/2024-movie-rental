@@ -1,6 +1,7 @@
 package org.example.formatter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -12,12 +13,12 @@ public final class HTMLStatementFormatter implements StatementFormatter {
 
   @Override
   public String print(final Statement statement) {
-    return String.join("\n", List.of(
+    return join(
         h1("Rental Record for " + em(statement.name())),
-        String.join("\n", table(statement.rentals().stream().map(this::toRow))),
+        join(table(statement.rentals().stream().map(this::toRow))),
         p("Amount owed is " + em(statement.totalAmount())),
         p("You earned " + em(statement.frequentRenterPoints()) + " frequent renter points")
-    ));
+    );
   }
 
   private String toRow(final StatementRental rental) {
@@ -84,5 +85,13 @@ public final class HTMLStatementFormatter implements StatementFormatter {
 
   private String indent(final String line) {
     return "  " + line;
+  }
+
+  private String join(final String ...lines) {
+    return join(List.of(lines));
+  }
+
+  private String join(final List<String> lines) {
+    return String.join("\n", lines);
   }
 }
